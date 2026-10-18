@@ -3,7 +3,6 @@ import axios from "axios";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { ImSpinner2 } from "react-icons/im";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 export default function CommentDelete({
   postId,
@@ -15,7 +14,6 @@ export default function CommentDelete({
   commentId: string;
 }) {
   let query = useQueryClient();
-  let navigate = useNavigate();
 
   function getDeletePost() {
     return axios.delete(
