@@ -7,6 +7,7 @@ import type { PostType } from "../../Types/post";
 import CreatePost from "../../Components/CreatePost/CreatePost";
 import { useEffect } from "react";
 import { IoRocketSharp } from "react-icons/io5";
+import Helmet from "react-helmet";
 
 export default function Home() {
   useEffect(() => {
@@ -57,6 +58,11 @@ export default function Home() {
 
   return (
     <>
+      <div>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
+      </div>
       <div>
         <CreatePost queryKey={["getAllPosts"]} />
       </div>

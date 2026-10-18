@@ -12,10 +12,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthContextProvider from "./Context/AuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import ProtectedRouteOut from "./Components/ProtectedRouteOut/ProtectedRouteOut";
+import useNetworkState from './../node_modules/react-use/esm/useNetworkState';
+import Online from "./Components/Online/Online";
 
 
 
 let query = new QueryClient();
+
 
 const router = createBrowserRouter([
   {
@@ -73,8 +76,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  let {online} = useNetworkState()
   return (
     <>
+      {!online && <Online />}
       <AuthContextProvider>
         <QueryClientProvider client={query}>
           <Toaster />

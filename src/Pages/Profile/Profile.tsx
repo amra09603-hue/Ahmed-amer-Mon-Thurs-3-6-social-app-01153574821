@@ -9,15 +9,16 @@ import CreatePost from "./../../Components/CreatePost/CreatePost";
 import ChangePassword from "../../Components/ChangePassword/ChangePassword";
 import ChangeProfileImg from "../../Components/ChangeProfileImg/ChangeProfileImg";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Profile() {
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    })
-  },[])
-  
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   function getMyProfile() {
     return axios.get(`https://route-posts.routemisr.com/users/profile-data`, {
       headers: {
@@ -55,6 +56,7 @@ export default function Profile() {
   if (isError) {
     return (
       <>
+        
         <div>{error?.message}</div>
         <div className="w-full h-screen flex justify-center items-center">
           <div>
@@ -65,10 +67,14 @@ export default function Profile() {
       </>
     );
   }
-  
 
   return (
     <>
+    <div>
+          <Helmet>
+            <title>Profile</title>
+          </Helmet>
+        </div>
       {user && (
         <>
           <div className="w-[70%] mx-auto bg-white rounded-2xl shadow-lg border border-blue-100 overflow-hidden my-6">
